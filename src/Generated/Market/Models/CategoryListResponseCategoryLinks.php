@@ -1,0 +1,45 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Lolzteam\Generated\Market\Models;
+
+use JsonSerializable;
+
+/**
+ * Auto-generated model class.
+ */
+class CategoryListResponseCategoryLinks implements JsonSerializable
+{
+    public function __construct(
+        public readonly string|null $permalink = null, // Permalink
+        public readonly string|null $detail = null, // Detail
+        public readonly string|null $subCategories = null, // Sub-Categories
+        public readonly string|null $subForums = null, // Sub-Forums
+    ) {}
+
+    public static function fromArray(array $data): static
+    {
+        return new static(
+            permalink: $data['permalink'] ?? null,
+            detail: $data['detail'] ?? null,
+            subCategories: $data['sub-categories'] ?? null,
+            subForums: $data['sub-forums'] ?? null,
+        );
+    }
+
+    public function toArray(): array
+    {
+        return array_filter([
+            'permalink' => $this->permalink,
+            'detail' => $this->detail,
+            'sub-categories' => $this->subCategories,
+            'sub-forums' => $this->subForums,
+        ], static fn($v) => $v !== null);
+    }
+
+    public function jsonSerialize(): array
+    {
+        return $this->toArray();
+    }
+}
